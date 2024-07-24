@@ -18,12 +18,11 @@ Images used on this site are courtesy of Unsplash, a fantastic source of free CC
 
 Feel free to reach out for feedback, collaborations, or just to say hello:
 
-- **Email**: [your-email@example.com](mailto:your-email@example.com)
-- **LinkedIn**: [linkedin.com/in/your-profile](https://linkedin.com/in/your-profile)
+- **Email**: [your-email@example.com](mailto:singhalshubham949@gmail.com@example.com)
+- **LinkedIn**: [linkedin.com/in/your-profile](https://linkedin.com/in/sciencestoked)
 
 ### Credits
 
-- **Demo Images**: [Unsplash](https://unsplash.com)
 - **Icons**: [Font Awesome](https://fontawesome.com)
 - **Other**:
   - [jQuery](https://jquery.com)
