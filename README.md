@@ -36,8 +36,8 @@ This project is licensed under the Creative Commons Attribution 3.0 License (CC 
 To get started with this template, clone the repository and customize it to fit your needs.
 
 ```bash
-git clone https://github.com/your-username/your-repo.git
-cd your-repo
+git clone https://github.com/sciencestoked/Portfolio_Website_2.0.git
+cd Portfolio_Website_2.0
 ```
 
 Edit the files in your favorite editor and push changes as needed.
