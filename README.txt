@@ -1,33 +1,49 @@
-Strata by HTML5 UP
-html5up.net | @ajlkn
-Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 
+Welcome to my portfolio website! This site showcases my work as a Robotics Engineer and Machine Learning Enthusiast. 
 
-A simple, minimalist template that actually began life as an unused redesign of my
-personal site. Includes a (configurable) parallax background effect, Poptrox-powered
-lightbox gallery, a bunch of pre-styled elements, and Sass sources for the Sass-inclined.
+### About This Template
 
-Demo images* courtesy of Unsplash, a radtastic collection of CC0 (public domain) images
-you can use for pretty much whatever.
+This is a simple and minimalist template adapted from **Strata by HTML5 UP**, originally created as a redesign of a personal site. It features:
 
-(* = Not included)
+- **Parallax Background Effect**: Adds depth and visual appeal.
+- **Poptrox-Powered Lightbox Gallery**: For showcasing images and projects.
+- **Pre-Styled Elements**: Consistent and modern design elements.
+- **Sass Sources**: Available for those who prefer using Sass for styling.
 
-Feedback, bug reports, and comments are not only welcome, but strongly encouraged :)
+### Demo Images
 
-AJ
-aj@lkn.io | @ajlkn
+Images used on this site are courtesy of Unsplash, a fantastic source of free CC0 (public domain) images. (*Note: Images are not included with the template.*)
 
-PS: Not sure how to get that contact form working? Give formspree.io a try (it's awesome).
+### Contact
 
+Feel free to reach out for feedback, collaborations, or just to say hello:
 
-Credits:
+- **Email**: [your-email@example.com](mailto:your-email@example.com)
+- **LinkedIn**: [linkedin.com/in/your-profile](https://linkedin.com/in/your-profile)
 
-	Demo Images:
-		Unsplash (unsplash.com)
+### Credits
 
-	Icons:
-		Font Awesome (fontawesome.io)
+- **Demo Images**: [Unsplash](https://unsplash.com)
+- **Icons**: [Font Awesome](https://fontawesome.com)
+- **Other**:
+  - [jQuery](https://jquery.com)
+  - [Responsive Tools](https://github.com/ajlkn/responsive-tools)
 
-	Other:
-		jQuery (jquery.com)
-		Responsive Tools (github.com/ajlkn/responsive-tools)
+### License
+
+This project is licensed under the Creative Commons Attribution 3.0 License (CC BY 3.0). For more details, please visit [html5up.net/license](https://html5up.net/license).
+
+### Getting Started
+
+To get started with this template, clone the repository and customize it to fit your needs.
+
+```bash
+git clone https://github.com/your-username/your-repo.git
+cd your-repo
+```
+
+Edit the files in your favorite editor and push changes as needed.
+
+---
+
+Feel free to adjust the links, email addresses, and other details to fit your actual information. This updated README provides a clear description of your project, credits, and license information, making it more relevant and personalized.
