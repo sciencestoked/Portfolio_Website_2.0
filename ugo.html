@@ -1,0 +1,84 @@
+<!-- Main Content for Modal -->
+<section id="blog-post">
+    <!-- Image -->
+    <div class="blog-image">
+        <img src="images/ugo-combined.jpg" alt="Ugo Inc Combined Internship" />
+    </div>
+    
+    <!-- Heading -->
+    <header class="blog-header">
+        <h2>Ugo Inc Internships: Elevating Robotics and Machine Learning</h2>
+    </header>
+
+    <!-- Content -->
+    <div class="blog-content">
+        <p>My journey with Ugo Inc involved two distinct yet complementary internships, each contributing to significant advancements in robotics and machine learning. Here's a detailed account of the experiences and achievements from both the <strong>online</strong> and <strong>offline</strong> internships:</p>
+
+        <h3>1. Ugo Inc - Online Internship</h3>
+        <p>During my online internship at Ugo Inc, I focused on optimizing robotic systems through advanced machine learning techniques. A major achievement was enhancing the performance of the <strong>elevator button detection system</strong> by an impressive <strong>3X</strong>. This was accomplished by employing <strong>data augmentation</strong> and <strong>model optimization</strong>, which involved:</p>
+        <ul>
+            <li><strong>Data Augmentation:</strong> Utilizing various techniques to artificially expand the training dataset, thereby improving model robustness and accuracy.</li>
+            <li><strong>Model Optimization:</strong> Fine-tuning the existing models to achieve better performance metrics and efficiency.</li>
+        </ul>
+        <p>Additionally, I undertook the conversion of <strong>YOLO models</strong> to <strong>ONNX format</strong> for deployment on <strong>Jetson Nano</strong>, enhancing model performance and compatibility with edge devices. I also implemented <strong>RMF Core</strong> and <strong>task dispatcher mechanisms</strong> for collective robot control using <strong>ROS 2 Humble</strong> and <strong>Gazebo Fortress/Ignition</strong>, which streamlined multi-robot coordination and task management.</p>
+
+        <h3>2. Ugo Inc - Offline Internship</h3>
+        <p>The offline internship at Ugo Inc provided hands-on experience in developing and deploying robotics solutions. I was responsible for:</p>
+        <ul>
+            <li><strong>Automated Navigation System:</strong> Designed and implemented an automated navigation system for a robotic kart, leading to a <strong>20% increase</strong> in operational efficiency. This project utilized:</li>
+            <ul>
+                <li><strong>Autonomous Navigation Stack:</strong> For autonomous movement and path planning.</li>
+                <li><strong>HectorSLAM:</strong> For real-time mapping.</li>
+                <li><strong>Monte Carlo Localization (MCL):</strong> For accurate positioning and navigation.</li>
+            </ul>
+            <li><strong>Virtual Robot Model:</strong> Created a <strong>URDF model</strong> to simulate and analyze the robot’s behavior in various scenarios. This involved publishing <strong>LiDAR scan data</strong> and obtaining <strong>encoder data</strong> for accurate movement tracking.</li>
+            <li><strong>Data Communication:</strong> Developed a <strong>.NET C# server</strong> and a <strong>NATS server</strong> to facilitate the efficient <strong>publishing of navigation data</strong> and improve communication between systems.</li>
+        </ul>
+        <p>Both internships at Ugo Inc were instrumental in expanding my knowledge and skills in robotics and machine learning. They provided practical experience in optimizing systems, developing advanced robotic solutions, and working with cutting-edge technologies.</p>
+    </div>
+</section>
+
+<!-- Add some CSS to style the modal content -->
+<style>
+    #blog-post {
+        padding: 20px;
+        background: #fff;
+        border-radius: 8px;
+        max-width: 800px;
+        margin: auto;
+    }
+    
+    .blog-image img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+    }
+    
+    .blog-header h2 {
+        margin-top: 20px;
+        font-size: 2em;
+        color: #333;
+    }
+    
+    .blog-content p {
+        font-size: 1.2em;
+        line-height: 1.6;
+        color: #666;
+    }
+    
+    .blog-content ul {
+        margin: 20px 0;
+        padding: 0;
+        list-style-type: disc;
+    }
+    
+    .blog-content ul ul {
+        list-style-type: circle;
+        margin-left: 20px;
+    }
+    
+    .blog-content li {
+        font-size: 1.1em; /* Adjusted font size for better readability */
+        line-height: 1.5; /* Adjusted line height for better spacing */
+    }
+</style>
