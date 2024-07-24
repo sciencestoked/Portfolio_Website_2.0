@@ -1,5 +1,4 @@
-
-#Welcome to my portfolio website! This site showcases my work as a Robotics Engineer and Machine Learning Enthusiast. 
+# Welcome to my portfolio website! This site showcases my work as a Robotics Engineer and Machine Learning Enthusiast. 
 
 ### About This Template
 
