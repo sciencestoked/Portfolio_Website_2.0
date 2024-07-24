@@ -9,9 +9,6 @@ This is a simple and minimalist template adapted from **Strata by HTML5 UP**, or
 - **Pre-Styled Elements**: Consistent and modern design elements.
 - **Sass Sources**: Available for those who prefer using Sass for styling.
 
-### Demo Images
-
-Images used on this site are courtesy of Unsplash, a fantastic source of free CC0 (public domain) images. (*Note: Images are not included with the template.*)
 
 ### Contact
 
@@ -39,9 +36,3 @@ To get started with this template, clone the repository and customize it to fit 
 git clone https://github.com/sciencestoked/Portfolio_Website_2.0.git
 cd Portfolio_Website_2.0
 ```
-
-Edit the files in your favorite editor and push changes as needed.
-
----
-
-Feel free to adjust the links, email addresses, and other details to fit your actual information. This updated README provides a clear description of your project, credits, and license information, making it more relevant and personalized.
