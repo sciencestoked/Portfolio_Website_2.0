@@ -2,39 +2,67 @@
 <section id="blog-post">
     <!-- Image -->
     <div class="blog-image">
-        <img src="images/ugo-combined.jpg" alt="Ugo Inc Combined Internship" />
+        <img src="images/ugo/desk-setup.jpeg" alt="Ugo Inc Desk Setup" />
     </div>
     
     <!-- Heading -->
     <header class="blog-header">
-        <h2>Ugo Inc Internships: Elevating Robotics and Machine Learning</h2>
+        <h2>Ugo Inc Internship: Autonomous Navigation with Lidar Mapping</h2>
     </header>
 
     <!-- Content -->
     <div class="blog-content">
-        <p>My journey with Ugo Inc involved two distinct yet complementary internships, each contributing to significant advancements in robotics and machine learning. Here's a detailed account of the experiences and achievements from both the <strong>online</strong> and <strong>offline</strong> internships:</p>
+        <p>During my offline internship at Ugo Inc, I had the opportunity to work on developing and deploying advanced robotic solutions, focusing on autonomous navigation using lidar mapping. The project was divided into two main workspaces: <strong>lidar_test</strong> for mapping and <strong>final_navigation</strong> for autonomous navigation.</p>
 
-        <h3>1. Ugo Inc - Online Internship</h3>
-        <p>During my online internship at Ugo Inc, I focused on optimizing robotic systems through advanced machine learning techniques. A major achievement was enhancing the performance of the <strong>elevator button detection system</strong> by an impressive <strong>3X</strong>. This was accomplished by employing <strong>data augmentation</strong> and <strong>model optimization</strong>, which involved:</p>
-        <ul>
-            <li><strong>Data Augmentation:</strong> Utilizing various techniques to artificially expand the training dataset, thereby improving model robustness and accuracy.</li>
-            <li><strong>Model Optimization:</strong> Fine-tuning the existing models to achieve better performance metrics and efficiency.</li>
-        </ul>
-        <p>Additionally, I undertook the conversion of <strong>YOLO models</strong> to <strong>ONNX format</strong> for deployment on <strong>Jetson Nano</strong>, enhancing model performance and compatibility with edge devices. I also implemented <strong>RMF Core</strong> and <strong>task dispatcher mechanisms</strong> for collective robot control using <strong>ROS 2 Humble</strong> and <strong>Gazebo Fortress/Ignition</strong>, which streamlined multi-robot coordination and task management.</p>
+        <h3>Project Overview</h3>
+        <p>The goal of the project was to achieve autonomous navigation using lidar mapping. This involved creating a detailed map of the environment using a lidar sensor and then using that map to navigate the robot autonomously. The project structure was organized into various packages, each serving a specific purpose.</p>
 
-        <h3>2. Ugo Inc - Offline Internship</h3>
-        <p>The offline internship at Ugo Inc provided hands-on experience in developing and deploying robotics solutions. I was responsible for:</p>
+        <h3>Workspace: lidar_test</h3>
+        <p>The <strong>lidar_test</strong> workspace was primarily focused on mapping. Here are the key packages and their functionalities:</p>
         <ul>
-            <li><strong>Automated Navigation System:</strong> Designed and implemented an automated navigation system for a robotic kart, leading to a <strong>20% increase</strong> in operational efficiency. This project utilized:</li>
-            <ul>
-                <li><strong>Autonomous Navigation Stack:</strong> For autonomous movement and path planning.</li>
-                <li><strong>HectorSLAM:</strong> For real-time mapping.</li>
-                <li><strong>Monte Carlo Localization (MCL):</strong> For accurate positioning and navigation.</li>
-            </ul>
-            <li><strong>Virtual Robot Model:</strong> Created a <strong>URDF model</strong> to simulate and analyze the robot’s behavior in various scenarios. This involved publishing <strong>LiDAR scan data</strong> and obtaining <strong>encoder data</strong> for accurate movement tracking.</li>
-            <li><strong>Data Communication:</strong> Developed a <strong>.NET C# server</strong> and a <strong>NATS server</strong> to facilitate the efficient <strong>publishing of navigation data</strong> and improve communication between systems.</li>
+            <li><strong>hector_slam:</strong> Used for mapping. The <code>mapping_default.launch</code> file was modified for mapping with joystick control.</li>
+            <li><strong>joy:</strong> Facilitates joystick control for the mapping process.</li>
+            <li><strong>Odometry Calculator:</strong> Receives twist messages and calculates odometry, then publishes it.</li>
+            <li><strong>my_package:</strong> Receives data from the server and publishes it as twist messages for odometry.</li>
+            <li><strong>ngk_kart_desc:</strong> Contains the URDF description of the robot.</li>
+            <li><strong>rplidar_ros:</strong> Responsible for launching the RPLidar sensor.</li>
+            <li><strong>twist_to_array:</strong> Reads <code>cmd_vel</code> data and converts it into an array for robot movement.</li>
         </ul>
-        <p>Both internships at Ugo Inc were instrumental in expanding my knowledge and skills in robotics and machine learning. They provided practical experience in optimizing systems, developing advanced robotic solutions, and working with cutting-edge technologies.</p>
+
+        <div class="blog-image">
+            <img src="images/ugo/map-i-made-and-am-proud-of.jpeg" alt="Lidar Mapping" />
+        </div>
+
+        <h3>Workspace: final_navigation</h3>
+        <p>The <strong>final_navigation</strong> workspace was dedicated to achieving autonomous navigation. Here are the key packages and their functionalities:</p>
+        <ul>
+            <li><strong>my_odometry_calculator:</strong> Similar to the package in the <strong>lidar_test</strong> workspace, it calculates odometry from twist messages and publishes it.</li>
+            <li><strong>my_package:</strong> Receives data from the server and publishes it as twist messages for odometry.</li>
+            <li><strong>ngk_kart_desc:</strong> Contains the URDF description of the robot.</li>
+            <li><strong>twist_to_array:</strong> Reads <code>cmd_vel</code> data and converts it into an array for robot movement.</li>
+            <li><strong>my_launcher:</strong> This is the main navigation stack package consisting of configurations for costmaps, a launch file for running all the nodes required for autonomous navigation, and a saved maps folder. It also contains a script to publish dynamic transformations from the Odom frame to <code>base_footprint</code>.</li>
+        </ul>
+
+        <div class="blog-image">
+            <img src="images/ugo/cute-ugo-mini-robot.jpeg" alt="Ugo Mini Robot" />
+        </div>
+
+        <h3>Running the Autonomous Navigation</h3>
+        <p>To achieve autonomous navigation, the following steps were performed:</p>
+        <ol>
+            <li>Launch the navigation stack: <code>roslaunch my_launcher launch-all.launch</code></li>
+            <li>Open Rviz to visualize the navigation components.</li>
+            <li>Set the initial 2D pose to align the laser scan with the map boundary for an approximate initial position.</li>
+            <li>Set a 2D point and pose as the final navigation goal.</li>
+            <li>The robot attempts to navigate to the specified goal.</li>
+        </ol>
+
+        <div class="blog-image">
+            <img src="images/ugo/kart-spinning-lol.gif" alt="Robotic Kart Spinning" />
+        </div>
+
+        <h3>Conclusion</h3>
+        <p>My offline internship at Ugo Inc was a remarkable experience that allowed me to delve deeply into autonomous navigation and lidar mapping. By working on this project, I was able to enhance my skills in robotics and gain practical experience in developing advanced robotic solutions. The hands-on approach and the challenges faced during the project were instrumental in my professional growth.</p>
     </div>
 </section>
 
@@ -66,19 +94,15 @@
         color: #666;
     }
     
-    .blog-content ul {
+    .blog-content ul,
+    .blog-content ol {
         margin: 20px 0;
-        padding: 0;
-        list-style-type: disc;
-    }
-    
-    .blog-content ul ul {
-        list-style-type: circle;
-        margin-left: 20px;
+        padding: 0 20px;
+        list-style-position: inside;
     }
     
     .blog-content li {
-        font-size: 1.1em; /* Adjusted font size for better readability */
-        line-height: 1.5; /* Adjusted line height for better spacing */
+        font-size: 1.1em;
+        line-height: 1.5;
     }
 </style>
