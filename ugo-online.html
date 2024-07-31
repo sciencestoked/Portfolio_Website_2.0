@@ -2,7 +2,7 @@
 <section id="blog-post">
     <!-- Banner Image -->
     <div class="blog-banner">
-        <img src="images/ugo/online-internship-banner.jpeg" alt="Ugo Inc Online Internship Banner" />
+        <img src="images/ugo-online/weights-and-biases-comparision-graph.png" alt="Weights and Biases Comparison Graph" />
     </div>
     
     <!-- Heading -->
@@ -20,12 +20,23 @@
         <h3>Performance Enhancement</h3>
         <p>To boost the model's performance, I experimented with various data augmentation techniques and model optimization methods:</p>
         <ul>
-            <li><strong>Data Augmentation:</strong> Implemented techniques such as rotation, scaling, and brightness adjustment to create a more robust training dataset. This resulted in a 3X performance boost.</li>
+            <li><strong>Data Augmentation:</strong> Implemented techniques such as rotation, scaling, and brightness adjustment using <strong>Roboflow</strong> to create a more robust training dataset. This resulted in a 3X performance boost.</li>
             <li><strong>Model Optimization:</strong> Converted YOLO models to the ONNX format and explored TensorRT SDK for optimization on the Jetson Nano, significantly improving inference speed and efficiency.</li>
         </ul>
 
         <div class="blog-image">
-            <img src="images/ugo/elevator-button-detection.jpeg" alt="Elevator Button Detection" />
+            <img src="images/ugo-online/RoboFlow-Dashboard.png" alt="Roboflow Dashboard" />
+        </div>
+
+        <h3>Experiment Management</h3>
+        <p>To manage and log the experiments, I used <strong>Weights & Biases</strong> for tracking the progress and results:</p>
+        <ul>
+            <li>Logged augmentation techniques and their effects on model performance.</li>
+            <li>Tracked various model versions and their respective performance metrics.</li>
+        </ul>
+
+        <div class="blog-image">
+            <img src="images/ugo-online/elevator-button-inference.jpg" alt="Elevator Button Inference" />
         </div>
 
         <h3>RMF Core and Task Dispatcher</h3>
@@ -36,7 +47,7 @@
         </ul>
 
         <div class="blog-image">
-            <img src="images/ugo/rmf-core.jpeg" alt="RMF Core Implementation" />
+            <img src="images/ugo-online/jetson-nano-setup.png" alt="Jetson Nano Setup" />
         </div>
 
         <h3>Challenges and Solutions</h3>
@@ -74,8 +85,9 @@
     }
 
     .blog-image img {
-        width: auto;
-        height: 500px;
+        width: 100%;
+        max-width: 500px;
+        height: auto;
         border-radius: 8px;
         display: inline-block;
     }
