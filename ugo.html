@@ -1,7 +1,7 @@
 <!-- Main Content for Modal -->
 <section id="blog-post">
-    <!-- Image -->
-    <div class="blog-image">
+    <!-- Banner Image -->
+    <div class="blog-banner">
         <img src="images/ugo/desk-setup.jpeg" alt="Ugo Inc Desk Setup" />
     </div>
     
@@ -12,35 +12,35 @@
 
     <!-- Content -->
     <div class="blog-content">
-        <p>During my offline internship at Ugo Inc, I had the opportunity to work on developing and deploying advanced robotic solutions, focusing on autonomous navigation using lidar mapping. The project was divided into two main workspaces: <strong>lidar_test</strong> for mapping and <strong>final_navigation</strong> for autonomous navigation.</p>
+        <p>During my offline internship at Ugo Inc, I had the opportunity to work on developing and deploying advanced robotic solutions, focusing on autonomous navigation using lidar mapping. The project was divided into two main phases: mapping and autonomous navigation.</p>
 
         <h3>Project Overview</h3>
-        <p>The goal of the project was to achieve autonomous navigation using lidar mapping. This involved creating a detailed map of the environment using a lidar sensor and then using that map to navigate the robot autonomously. The project structure was organized into various packages, each serving a specific purpose.</p>
+        <p>The goal of the project was to achieve autonomous navigation using lidar mapping. This involved creating a detailed map of the environment using a lidar sensor and then using that map to navigate the robot autonomously. The project structure was organized into various components, each serving a specific purpose.</p>
 
-        <h3>Workspace: lidar_test</h3>
-        <p>The <strong>lidar_test</strong> workspace was primarily focused on mapping. Here are the key packages and their functionalities:</p>
+        <h3>Mapping Phase</h3>
+        <p>The mapping phase was primarily focused on creating a map of the environment. Here are the key tasks and their functionalities:</p>
         <ul>
-            <li><strong>hector_slam:</strong> Used for mapping. The <code>mapping_default.launch</code> file was modified for mapping with joystick control.</li>
-            <li><strong>joy:</strong> Facilitates joystick control for the mapping process.</li>
-            <li><strong>Odometry Calculator:</strong> Receives twist messages and calculates odometry, then publishes it.</li>
-            <li><strong>my_package:</strong> Receives data from the server and publishes it as twist messages for odometry.</li>
-            <li><strong>ngk_kart_desc:</strong> Contains the URDF description of the robot.</li>
-            <li><strong>rplidar_ros:</strong> Responsible for launching the RPLidar sensor.</li>
-            <li><strong>twist_to_array:</strong> Reads <code>cmd_vel</code> data and converts it into an array for robot movement.</li>
+            <li><strong>SLAM Algorithm:</strong> Used for mapping. The launch file was modified for mapping with joystick control.</li>
+            <li><strong>Joystick Control:</strong> Facilitates joystick control for the mapping process.</li>
+            <li><strong>Odometry Calculation:</strong> Receives twist messages, calculates odometry, and then publishes it.</li>
+            <li><strong>Data Publisher:</strong> Receives data from the server and publishes it as twist messages for odometry.</li>
+            <li><strong>Robot Description:</strong> Contains the URDF description of the robot.</li>
+            <li><strong>Lidar Sensor Launch:</strong> Responsible for launching the lidar sensor.</li>
+            <li><strong>Velocity to Array:</strong> Reads velocity data and converts it into an array for robot movement.</li>
         </ul>
 
         <div class="blog-image">
             <img src="images/ugo/map-i-made-and-am-proud-of.jpeg" alt="Lidar Mapping" />
         </div>
 
-        <h3>Workspace: final_navigation</h3>
-        <p>The <strong>final_navigation</strong> workspace was dedicated to achieving autonomous navigation. Here are the key packages and their functionalities:</p>
+        <h3>Navigation Phase</h3>
+        <p>The navigation phase was dedicated to achieving autonomous navigation. Here are the key tasks and their functionalities:</p>
         <ul>
-            <li><strong>my_odometry_calculator:</strong> Similar to the package in the <strong>lidar_test</strong> workspace, it calculates odometry from twist messages and publishes it.</li>
-            <li><strong>my_package:</strong> Receives data from the server and publishes it as twist messages for odometry.</li>
-            <li><strong>ngk_kart_desc:</strong> Contains the URDF description of the robot.</li>
-            <li><strong>twist_to_array:</strong> Reads <code>cmd_vel</code> data and converts it into an array for robot movement.</li>
-            <li><strong>my_launcher:</strong> This is the main navigation stack package consisting of configurations for costmaps, a launch file for running all the nodes required for autonomous navigation, and a saved maps folder. It also contains a script to publish dynamic transformations from the Odom frame to <code>base_footprint</code>.</li>
+            <li><strong>Odometry Calculation:</strong> Similar to the mapping phase, it calculates odometry from twist messages and publishes it.</li>
+            <li><strong>Data Publisher:</strong> Receives data from the server and publishes it as twist messages for odometry.</li>
+            <li><strong>Robot Description:</strong> Contains the URDF description of the robot.</li>
+            <li><strong>Velocity to Array:</strong> Reads velocity data and converts it into an array for robot movement.</li>
+            <li><strong>Navigation Stack:</strong> Consists of configurations for costmaps, a launch file for running all the nodes required for autonomous navigation, and a saved maps folder. It also contains a script to publish dynamic transformations from the odometry frame to the base footprint.</li>
         </ul>
 
         <div class="blog-image">
@@ -50,7 +50,7 @@
         <h3>Running the Autonomous Navigation</h3>
         <p>To achieve autonomous navigation, the following steps were performed:</p>
         <ol>
-            <li>Launch the navigation stack: <code>roslaunch my_launcher launch-all.launch</code></li>
+            <li>Launch the navigation stack: <code>roslaunch navigation_stack launch-all.launch</code></li>
             <li>Open Rviz to visualize the navigation components.</li>
             <li>Set the initial 2D pose to align the laser scan with the map boundary for an approximate initial position.</li>
             <li>Set a 2D point and pose as the final navigation goal.</li>
@@ -60,6 +60,14 @@
         <div class="blog-image">
             <img src="images/ugo/kart-spinning-lol.gif" alt="Robotic Kart Spinning" />
         </div>
+
+        <h3>Challenges and Solutions</h3>
+        <p>During the project, I faced several challenges, including:</p>
+        <ul>
+            <li><strong>Sensor Calibration:</strong> Ensuring accurate sensor data was crucial. I resolved this by performing extensive calibration tests and adjusting the parameters accordingly.</li>
+            <li><strong>Odometry Drift:</strong> Odometry data tended to drift over time, affecting navigation accuracy. I mitigated this by implementing sensor fusion techniques to combine data from multiple sensors.</li>
+            <li><strong>Obstacle Avoidance:</strong> The robot had to navigate around obstacles in real-time. I addressed this by fine-tuning the parameters of the navigation stack and integrating real-time obstacle detection algorithms.</li>
+        </ul>
 
         <h3>Conclusion</h3>
         <p>My offline internship at Ugo Inc was a remarkable experience that allowed me to delve deeply into autonomous navigation and lidar mapping. By working on this project, I was able to enhance my skills in robotics and gain practical experience in developing advanced robotic solutions. The hands-on approach and the challenges faced during the project were instrumental in my professional growth.</p>
@@ -76,12 +84,24 @@
         margin: auto;
     }
     
-    .blog-image img {
+    .blog-banner img {
         width: 100%;
         height: auto;
         border-radius: 8px;
     }
-    
+
+    .blog-image {
+        margin: 30px 0;
+        text-align: center;
+    }
+
+    .blog-image img {
+        width: auto;
+        height: 500px;
+        border-radius: 8px;
+        display: inline-block;
+    }
+
     .blog-header h2 {
         margin-top: 20px;
         font-size: 2em;
