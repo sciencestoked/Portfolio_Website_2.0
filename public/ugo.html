@@ -1,0 +1,128 @@
+<!-- Main Content for Modal -->
+<section id="blog-post">
+    <!-- Banner Image -->
+    <div class="blog-banner">
+        <img src="images/ugo/desk-setup.jpeg" alt="Ugo Inc Desk Setup" />
+    </div>
+    
+    <!-- Heading -->
+    <header class="blog-header">
+        <h2>Ugo Inc Internship: Autonomous Navigation with Lidar Mapping</h2>
+    </header>
+
+    <!-- Content -->
+    <div class="blog-content">
+        <p>During my offline internship at Ugo Inc, I had the opportunity to work on developing and deploying advanced robotic solutions, focusing on autonomous navigation using lidar mapping. The project was divided into two main phases: mapping and autonomous navigation.</p>
+
+        <h3>Project Overview</h3>
+        <p>The goal of the project was to achieve autonomous navigation using lidar mapping. This involved creating a detailed map of the environment using a lidar sensor and then using that map to navigate the robot autonomously. The project structure was organized into various components, each serving a specific purpose.</p>
+
+        <h3>Mapping Phase</h3>
+        <p>The mapping phase was primarily focused on creating a map of the environment. Here are the key tasks and their functionalities:</p>
+        <ul>
+            <li><strong>SLAM Algorithm:</strong> Used for mapping. The launch file was modified for mapping with joystick control.</li>
+            <li><strong>Joystick Control:</strong> Facilitates joystick control for the mapping process.</li>
+            <li><strong>Odometry Calculation:</strong> Receives twist messages, calculates odometry, and then publishes it.</li>
+            <li><strong>Data Publisher:</strong> Receives data from the server and publishes it as twist messages for odometry.</li>
+            <li><strong>Robot Description:</strong> Contains the URDF description of the robot.</li>
+            <li><strong>Lidar Sensor Launch:</strong> Responsible for launching the lidar sensor.</li>
+            <li><strong>Velocity to Array:</strong> Reads velocity data and converts it into an array for robot movement.</li>
+        </ul>
+
+        <div class="blog-image">
+            <img src="images/ugo/map-i-made-and-am-proud-of.jpeg" alt="Lidar Mapping" />
+        </div>
+
+        <h3>Navigation Phase</h3>
+        <p>The navigation phase was dedicated to achieving autonomous navigation. Here are the key tasks and their functionalities:</p>
+        <ul>
+            <li><strong>Odometry Calculation:</strong> Similar to the mapping phase, it calculates odometry from twist messages and publishes it.</li>
+            <li><strong>Data Publisher:</strong> Receives data from the server and publishes it as twist messages for odometry.</li>
+            <li><strong>Robot Description:</strong> Contains the URDF description of the robot.</li>
+            <li><strong>Velocity to Array:</strong> Reads velocity data and converts it into an array for robot movement.</li>
+            <li><strong>Navigation Stack:</strong> Consists of configurations for costmaps, a launch file for running all the nodes required for autonomous navigation, and a saved maps folder. It also contains a script to publish dynamic transformations from the odometry frame to the base footprint.</li>
+        </ul>
+
+        <div class="blog-image">
+            <img src="images/ugo/cute-ugo-mini-robot.jpeg" alt="Ugo Mini Robot" />
+        </div>
+
+        <h3>Running the Autonomous Navigation</h3>
+        <p>To achieve autonomous navigation, the following steps were performed:</p>
+        <ol>
+            <li>Launch the navigation stack: <code>roslaunch navigation_stack launch-all.launch</code></li>
+            <li>Open Rviz to visualize the navigation components.</li>
+            <li>Set the initial 2D pose to align the laser scan with the map boundary for an approximate initial position.</li>
+            <li>Set a 2D point and pose as the final navigation goal.</li>
+            <li>The robot attempts to navigate to the specified goal.</li>
+        </ol>
+
+        <div class="blog-image">
+            <img src="images/ugo/kart-spinning-lol.gif" alt="Robotic Kart Spinning" />
+        </div>
+
+        <h3>Challenges and Solutions</h3>
+        <p>During the project, I faced several challenges, including:</p>
+        <ul>
+            <li><strong>Sensor Calibration:</strong> Ensuring accurate sensor data was crucial. I resolved this by performing extensive calibration tests and adjusting the parameters accordingly.</li>
+            <li><strong>Odometry Drift:</strong> Odometry data tended to drift over time, affecting navigation accuracy. I mitigated this by implementing sensor fusion techniques to combine data from multiple sensors.</li>
+            <li><strong>Obstacle Avoidance:</strong> The robot had to navigate around obstacles in real-time. I addressed this by fine-tuning the parameters of the navigation stack and integrating real-time obstacle detection algorithms.</li>
+        </ul>
+
+        <h3>Conclusion</h3>
+        <p>My offline internship at Ugo Inc was a remarkable experience that allowed me to delve deeply into autonomous navigation and lidar mapping. By working on this project, I was able to enhance my skills in robotics and gain practical experience in developing advanced robotic solutions. The hands-on approach and the challenges faced during the project were instrumental in my professional growth.</p>
+    </div>
+</section>
+
+<!-- Add some CSS to style the modal content -->
+<style>
+    #blog-post {
+        padding: 20px;
+        background: #fff;
+        border-radius: 8px;
+        max-width: 800px;
+        margin: auto;
+    }
+    
+    .blog-banner img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+    }
+
+    .blog-image {
+        margin: 30px 0;
+        text-align: center;
+    }
+
+    .blog-image img {
+        width: auto;
+        height: 500px;
+        border-radius: 8px;
+        display: inline-block;
+    }
+
+    .blog-header h2 {
+        margin-top: 20px;
+        font-size: 2em;
+        color: #333;
+    }
+    
+    .blog-content p {
+        font-size: 1.2em;
+        line-height: 1.6;
+        color: #666;
+    }
+    
+    .blog-content ul,
+    .blog-content ol {
+        margin: 20px 0;
+        padding: 0 20px;
+        list-style-position: inside;
+    }
+    
+    .blog-content li {
+        font-size: 1.1em;
+        line-height: 1.5;
+    }
+</style>
