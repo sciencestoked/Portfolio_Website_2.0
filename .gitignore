@@ -9,5 +9,5 @@ logs
 *.log
 npm-debug.log*
 
-# Data files
-data/submissions.json
+# # Data files
+# data/submissions.json
