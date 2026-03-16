@@ -3,6 +3,7 @@ import './Desktop.css';
 import Icon from './Icon';
 import Window from './Window';
 import Taskbar from './Taskbar';
+import PortfolioNavigator from './PortfolioNavigator';
 
 interface DesktopProps {
   children?: React.ReactNode;
@@ -29,11 +30,13 @@ export interface WindowData {
 
 const Desktop: React.FC<DesktopProps> = () => {
   const [icons] = useState<IconData[]>([
-    { id: 'experience', title: 'Experience', icon: '📁', x: 20, y: 20 },
-    { id: 'skills', title: 'Skills', icon: '🛠️', x: 20, y: 100 },
-    { id: 'education', title: 'Education', icon: '🎓', x: 20, y: 180 },
-    { id: 'contact', title: 'Contact', icon: '📧', x: 20, y: 260 },
-    { id: 'hobbies', title: 'Hobbies', icon: '🎨', x: 20, y: 340 },
+    { id: 'navigator', title: 'Portfolio Navigator', icon: '🐢', x: 20, y: 20 },
+    { id: 'experience', title: 'Experience', icon: '📁', x: 20, y: 100 },
+    { id: 'skills', title: 'Skills', icon: '🛠️', x: 20, y: 180 },
+    { id: 'education', title: 'Education', icon: '🎓', x: 20, y: 260 },
+    { id: 'contact', title: 'Contact', icon: '📧', x: 20, y: 340 },
+    { id: 'hobbies', title: 'Hobbies', icon: '🎨', x: 20, y: 420 },
+    { id: 'resume', title: 'Resume.pdf', icon: '📄', x: 20, y: 500 },
   ]);
 
   const [windows, setWindows] = useState<WindowData[]>([]);
@@ -57,19 +60,67 @@ const Desktop: React.FC<DesktopProps> = () => {
     const icon = icons.find((i) => i.id === iconId);
     if (!icon) return;
 
+    let content: React.ReactNode;
+    let width = 600;
+    let height = 400;
+
+    if (iconId === 'navigator') {
+      content = <PortfolioNavigator onIconReached={handleIconReached} />;
+      width = 820;
+      height = 700;
+    } else if (iconId === 'resume') {
+      content = <div>Resume PDF viewer coming soon...</div>;
+    } else {
+      content = <div>Content for {icon.title}</div>;
+    }
+
     const newWindow: WindowData = {
       id: iconId,
       title: icon.title,
-      content: <div>Content for {icon.title}</div>,
-      width: 600,
-      height: 400,
+      content,
+      width,
+      height,
       x: 100 + windows.length * 30,
-      y: 100 + windows.length * 30,
+      y: 50 + windows.length * 30,
       zIndex: maxZIndex + 1,
     };
 
     setWindows((prev) => [...prev, newWindow]);
     setMaxZIndex((prev) => prev + 1);
+  };
+
+  const handleIconReached = (iconId: string) => {
+    // Open portfolio window when turtle reaches icon in maze
+    setMaxZIndex((prevMax) => {
+      const newZIndex = prevMax + 10;
+
+      setWindows((prev) => {
+        const existingWindow = prev.find((w) => w.id === iconId);
+
+        if (existingWindow) {
+          // Bring existing window to front
+          return prev.map((w) =>
+            w.id === iconId ? { ...w, zIndex: newZIndex } : w
+          );
+        }
+
+        // Create new window
+        const newWindow: WindowData = {
+          id: iconId,
+          title: iconId.charAt(0).toUpperCase() + iconId.slice(1),
+          content: <div><h2>{iconId.charAt(0).toUpperCase() + iconId.slice(1)}</h2><p>Portfolio content coming soon...</p></div>,
+          width: 600,
+          height: 400,
+          x: 150 + prev.length * 30,
+          y: 80 + prev.length * 30,
+          zIndex: newZIndex,
+        };
+
+        return [...prev, newWindow];
+      });
+
+      return newZIndex;
+    });
   };
 
   const handleCloseWindow = (windowId: string) => {
