@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Stage, Layer, Rect, Line, Circle, Text } from 'react-konva';
 import { generateMaze, getValidSpawnPositions, type Maze } from '../utils/mazeGenerator';
+import { findPath } from '../utils/pathfinding';
 import './PortfolioNavigator.css';
 
 interface PortfolioNavigatorProps {
@@ -35,8 +36,11 @@ const PortfolioNavigator: React.FC<PortfolioNavigatorProps> = ({ onIconReached }
   const [targets, setTargets] = useState<TargetIcon[]>([]);
   const [mode, setMode] = useState<'teleop' | 'auto'>('teleop');
   const [showFullMaze, setShowFullMaze] = useState(false);
+  const [path, setPath] = useState<{ x: number; y: number }[]>([]);
+  const [isNavigating, setIsNavigating] = useState(false);
 
   const stageRef = useRef<any>(null);
+  const navigationTimerRef = useRef<NodeJS.Timeout | null>(null);
 
   // Generate maze on mount
   useEffect(() => {
@@ -141,6 +145,74 @@ const PortfolioNavigator: React.FC<PortfolioNavigatorProps> = ({ onIconReached }
     return true;
   };
 
+  // Handle target click in auto mode
+  const handleTargetClick = (target: TargetIcon) => {
+    if (mode !== 'auto' || !maze || isNavigating) return;
+
+    // Find path from current position to target
+    const foundPath = findPath(
+      maze,
+      { x: turtle.gridX, y: turtle.gridY },
+      { x: target.gridX, y: target.gridY }
+    );
+
+    if (foundPath) {
+      setPath(foundPath);
+      setIsNavigating(true);
+      animatePath(foundPath);
+    }
+  };
+
+  // Animate turtle along path
+  const animatePath = (pathToFollow: { x: number; y: number }[]) => {
+    let stepIndex = 0;
+
+    const moveStep = () => {
+      if (stepIndex >= pathToFollow.length) {
+        setIsNavigating(false);
+        setPath([]);
+
+        // Check if reached a target using the final position from path
+        const finalPos = pathToFollow[pathToFollow.length - 1];
+        const reachedTarget = targets.find(
+          t => t.gridX === finalPos.x && t.gridY === finalPos.y
+        );
+        if (reachedTarget) {
+          onIconReached(reachedTarget.id);
+        }
+        return;
+      }
+
+      const nextPos = pathToFollow[stepIndex];
+      const newX = nextPos.x * CELL_SIZE + CELL_SIZE / 2;
+      const newY = nextPos.y * CELL_SIZE + CELL_SIZE / 2;
+
+      setTurtle({
+        x: newX,
+        y: newY,
+        gridX: nextPos.x,
+        gridY: nextPos.y,
+      });
+
+      // Mark cell as explored
+      setExploredCells(prev => new Set(prev).add(`${nextPos.x},${nextPos.y}`));
+
+      stepIndex++;
+      navigationTimerRef.current = setTimeout(moveStep, 200); // 200ms per step
+    };
+
+    moveStep();
+  };
+
+  // Cleanup navigation timer on unmount
+  useEffect(() => {
+    return () => {
+      if (navigationTimerRef.current) {
+        clearTimeout(navigationTimerRef.current);
+      }
+    };
+  }, []);
+
   if (!maze) return <div>Generating maze...</div>;
 
   return (
@@ -240,6 +312,23 @@ const PortfolioNavigator: React.FC<PortfolioNavigatorProps> = ({ onIconReached }
             );
           })}
 
+          {/* Render path visualization in auto mode */}
+          {mode === 'auto' && path.length > 0 && (
+            <>
+              {path.map((pos, i) => (
+                <Rect
+                  key={`path-${i}`}
+                  x={pos.x * CELL_SIZE + CELL_SIZE / 4}
+                  y={pos.y * CELL_SIZE + CELL_SIZE / 4}
+                  width={CELL_SIZE / 2}
+                  height={CELL_SIZE / 2}
+                  fill="#ffff00"
+                  opacity={0.3}
+                />
+              ))}
+            </>
+          )}
+
           {/* Render ALL targets (always visible, not hidden by fog-of-war) */}
           {targets.map(target => {
             return (
@@ -249,6 +338,9 @@ const PortfolioNavigator: React.FC<PortfolioNavigatorProps> = ({ onIconReached }
                 y={target.gridY * CELL_SIZE + CELL_SIZE / 4}
                 text={target.emoji}
                 fontSize={24}
+                onClick={() => handleTargetClick(target)}
+                onTap={() => handleTargetClick(target)}
+                style={{ cursor: mode === 'auto' ? 'pointer' : 'default' }}
               />
             );
           })}
