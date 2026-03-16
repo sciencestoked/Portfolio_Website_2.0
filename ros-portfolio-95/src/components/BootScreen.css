@@ -1,0 +1,125 @@
+.boot-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  animation: fadeIn 0.5s ease-in;
+}
+
+.boot-content {
+  text-align: center;
+  color: #ffffff;
+  font-family: 'MS Sans Serif', sans-serif;
+}
+
+.windows-logo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 8px;
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 30px;
+  animation: logoFloat 2s ease-in-out infinite;
+}
+
+.logo-square {
+  width: 100%;
+  height: 100%;
+  animation: squarePulse 1.5s ease-in-out infinite;
+}
+
+.logo-square.red {
+  background-color: #ff0000;
+  animation-delay: 0s;
+}
+
+.logo-square.green {
+  background-color: #00ff00;
+  animation-delay: 0.2s;
+}
+
+.logo-square.blue {
+  background-color: #0000ff;
+  animation-delay: 0.4s;
+}
+
+.logo-square.yellow {
+  background-color: #ffff00;
+  animation-delay: 0.6s;
+}
+
+.boot-title {
+  font-size: 48px;
+  font-weight: bold;
+  margin: 0 0 20px 0;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.boot-text {
+  font-size: 18px;
+  margin: 0 0 30px 0;
+  opacity: 0.8;
+}
+
+.progress-bar-container {
+  width: 300px;
+  height: 20px;
+  background-color: #808080;
+  border: 2px solid #ffffff;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #0000aa 0%, #0000ff 50%, #0000aa 100%);
+  background-size: 200% 100%;
+  animation: progressShimmer 2s linear infinite;
+  transition: width 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes logoFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes squarePulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(0.95);
+  }
+}
+
+@keyframes progressShimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}

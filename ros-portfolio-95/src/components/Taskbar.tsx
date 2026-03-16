@@ -1,7 +1,18 @@
 import { useEffect, useState } from 'react';
 import './Taskbar.css';
 
-const Taskbar: React.FC = () => {
+interface WindowData {
+  id: string;
+  title: string;
+  minimized?: boolean;
+}
+
+interface TaskbarProps {
+  windows: WindowData[];
+  onRestoreWindow: (windowId: string) => void;
+}
+
+const Taskbar: React.FC<TaskbarProps> = ({ windows, onRestoreWindow }) => {
   const [time, setTime] = useState(new Date());
 
   useEffect(() => {
@@ -26,7 +37,17 @@ const Taskbar: React.FC = () => {
         <span className="start-icon">⊞</span>
         Start
       </button>
-      <div className="taskbar-apps"></div>
+      <div className="taskbar-apps">
+        {windows.map((window) => (
+          <button
+            key={window.id}
+            className={`taskbar-app ${window.minimized ? 'minimized' : 'active'}`}
+            onClick={() => window.minimized && onRestoreWindow(window.id)}
+          >
+            {window.title}
+          </button>
+        ))}
+      </div>
       <div className="taskbar-tray">
         <div className="clock">{formatTime(time)}</div>
       </div>

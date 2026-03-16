@@ -1,4 +1,6 @@
+import { useState } from 'react';
 import { Rnd } from 'react-rnd';
+import WindowLoader from './WindowLoader';
 import './Window.css';
 
 interface WindowProps {
@@ -9,8 +11,10 @@ interface WindowProps {
   x: number;
   y: number;
   zIndex: number;
+  minimized: boolean;
   children: React.ReactNode;
   onClose: (id: string) => void;
+  onMinimize: (id: string) => void;
   onClick: (id: string) => void;
 }
 
@@ -22,10 +26,22 @@ const Window: React.FC<WindowProps> = ({
   x,
   y,
   zIndex,
+  minimized,
   children,
   onClose,
+  onMinimize,
   onClick,
 }) => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  const handleMinimize = () => {
+    onMinimize(id);
+  };
+
+  if (minimized) {
+    return null;
+  }
+
   return (
     <Rnd
       default={{
@@ -45,14 +61,20 @@ const Window: React.FC<WindowProps> = ({
         <div className="window-title-bar">
           <span className="window-title">{title}</span>
           <div className="window-controls">
-            <button className="window-button minimize">_</button>
+            <button className="window-button minimize" onClick={handleMinimize}>_</button>
             <button className="window-button maximize">□</button>
             <button className="window-button close" onClick={() => onClose(id)}>
               ×
             </button>
           </div>
         </div>
-        <div className="window-content">{children}</div>
+        <div className="window-content">
+          {isLoading ? (
+            <WindowLoader onLoadComplete={() => setIsLoading(false)} />
+          ) : (
+            children
+          )}
+        </div>
       </div>
     </Rnd>
   );

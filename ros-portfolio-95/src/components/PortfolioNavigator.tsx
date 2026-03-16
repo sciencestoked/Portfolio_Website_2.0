@@ -38,6 +38,7 @@ const PortfolioNavigator: React.FC<PortfolioNavigatorProps> = ({ onIconReached }
   const [showFullMaze, setShowFullMaze] = useState(false);
   const [path, setPath] = useState<{ x: number; y: number }[]>([]);
   const [isNavigating, setIsNavigating] = useState(false);
+  const [statusMessage, setStatusMessage] = useState<string>('');
 
   const stageRef = useRef<any>(null);
   const navigationTimerRef = useRef<NodeJS.Timeout | null>(null);
@@ -159,18 +160,22 @@ const PortfolioNavigator: React.FC<PortfolioNavigatorProps> = ({ onIconReached }
     if (foundPath) {
       setPath(foundPath);
       setIsNavigating(true);
-      animatePath(foundPath);
+      setStatusMessage(`🚀 Navigating to ${target.emoji} ${target.label}...`);
+      animatePath(foundPath, target);
+    } else {
+      setStatusMessage('❌ No path found!');
     }
   };
 
   // Animate turtle along path
-  const animatePath = (pathToFollow: { x: number; y: number }[]) => {
+  const animatePath = (pathToFollow: { x: number; y: number }[], target: TargetIcon) => {
     let stepIndex = 0;
 
     const moveStep = () => {
       if (stepIndex >= pathToFollow.length) {
         setIsNavigating(false);
         setPath([]);
+        setStatusMessage(`✅ Arrived at ${target.emoji} ${target.label}!`);
 
         // Check if reached a target using the final position from path
         const finalPos = pathToFollow[pathToFollow.length - 1];
@@ -180,6 +185,9 @@ const PortfolioNavigator: React.FC<PortfolioNavigatorProps> = ({ onIconReached }
         if (reachedTarget) {
           onIconReached(reachedTarget.id);
         }
+
+        // Clear status message after 2 seconds
+        setTimeout(() => setStatusMessage(''), 2000);
         return;
       }
 
@@ -213,7 +221,14 @@ const PortfolioNavigator: React.FC<PortfolioNavigatorProps> = ({ onIconReached }
     };
   }, []);
 
-  if (!maze) return <div>Generating maze...</div>;
+  if (!maze) {
+    return (
+      <div className="maze-loading">
+        <div className="spinner"></div>
+        <div className="loading-text">Generating maze...</div>
+      </div>
+    );
+  }
 
   return (
     <div className="navigator-container">
@@ -359,6 +374,9 @@ const PortfolioNavigator: React.FC<PortfolioNavigatorProps> = ({ onIconReached }
 
       <div className="mini-map">
         <div className="mini-map-title">Explored: {exploredCells.size}/{MAZE_COLS * MAZE_ROWS}</div>
+        {statusMessage && (
+          <div className="status-message">{statusMessage}</div>
+        )}
       </div>
     </div>
   );

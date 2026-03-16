@@ -31,6 +31,7 @@ export interface WindowData {
   x: number;
   y: number;
   zIndex: number;
+  minimized?: boolean;
 }
 
 const Desktop: React.FC<DesktopProps> = () => {
@@ -72,7 +73,7 @@ const Desktop: React.FC<DesktopProps> = () => {
     if (iconId === 'navigator') {
       content = <PortfolioNavigator onIconReached={handleIconReached} />;
       width = 820;
-      height = 700;
+      height = 750;
     } else if (iconId === 'experience') {
       content = <ExperienceWindow />;
       width = 700;
@@ -185,6 +186,23 @@ const Desktop: React.FC<DesktopProps> = () => {
     setWindows((prev) => prev.filter((w) => w.id !== windowId));
   };
 
+  const handleMinimizeWindow = (windowId: string) => {
+    setWindows((prev) =>
+      prev.map((w) =>
+        w.id === windowId ? { ...w, minimized: true } : w
+      )
+    );
+  };
+
+  const handleRestoreWindow = (windowId: string) => {
+    setWindows((prev) =>
+      prev.map((w) =>
+        w.id === windowId ? { ...w, minimized: false, zIndex: maxZIndex + 1 } : w
+      )
+    );
+    setMaxZIndex((prev) => prev + 1);
+  };
+
   const handleWindowClick = (windowId: string) => {
     setWindows((prev) =>
       prev.map((w) =>
@@ -220,14 +238,19 @@ const Desktop: React.FC<DesktopProps> = () => {
           x={window.x}
           y={window.y}
           zIndex={window.zIndex}
+          minimized={window.minimized || false}
           onClose={handleCloseWindow}
+          onMinimize={handleMinimizeWindow}
           onClick={handleWindowClick}
         >
           {window.content}
         </Window>
       ))}
 
-      <Taskbar />
+      <Taskbar
+        windows={windows}
+        onRestoreWindow={handleRestoreWindow}
+      />
     </div>
   );
 };
