@@ -1,0 +1,168 @@
+.contact-window {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  background-color: #c0c0c0;
+  padding: 8px;
+  font-family: 'MS Sans Serif', sans-serif;
+}
+
+.contact-header {
+  margin-bottom: 16px;
+  padding: 8px;
+  background-color: #000080;
+  color: white;
+}
+
+.contact-header h2 {
+  margin: 0 0 4px 0;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.contact-header p {
+  margin: 0;
+  font-size: 11px;
+}
+
+.contact-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.contact-info,
+.contact-form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contact-info fieldset,
+.contact-form-container fieldset {
+  background-color: #c0c0c0;
+  border: 2px groove #ffffff;
+  padding: 12px;
+  margin: 0;
+}
+
+fieldset legend {
+  font-size: 11px;
+  font-weight: bold;
+  padding: 0 4px;
+}
+
+.info-item {
+  font-size: 11px;
+  margin-bottom: 8px;
+  padding: 4px;
+  background-color: #ffffff;
+  border: 1px solid #808080;
+}
+
+.info-item strong {
+  color: #000080;
+}
+
+.social-links {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.social-link {
+  display: block;
+  padding: 4px 8px;
+  background-color: #c0c0c0;
+  border: 2px outset #dfdfdf;
+  color: #000000;
+  text-decoration: none;
+  font-size: 11px;
+  text-align: center;
+}
+
+.social-link:hover {
+  background-color: #dfdfdf;
+}
+
+.social-link:active {
+  border-style: inset;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.form-group label {
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 4px;
+  border: 2px inset #dfdfdf;
+  background-color: #ffffff;
+  font-family: 'MS Sans Serif', sans-serif;
+  font-size: 11px;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: 1px dotted #000000;
+}
+
+button[type="submit"] {
+  padding: 6px 12px;
+  border: 2px outset #dfdfdf;
+  background-color: #c0c0c0;
+  cursor: pointer;
+  font-size: 11px;
+  font-family: 'MS Sans Serif', sans-serif;
+  font-weight: bold;
+}
+
+button[type="submit"]:hover {
+  background-color: #dfdfdf;
+}
+
+button[type="submit"]:active {
+  border-style: inset;
+}
+
+button[type="submit"]:disabled {
+  color: #808080;
+  cursor: not-allowed;
+}
+
+.status-message {
+  padding: 8px;
+  font-size: 11px;
+  text-align: center;
+  margin-top: 8px;
+}
+
+.status-message.success {
+  background-color: #00ff00;
+  border: 2px solid #008000;
+}
+
+.status-message.error {
+  background-color: #ff0000;
+  color: #ffffff;
+  border: 2px solid #800000;
+}
+
+@media (max-width: 768px) {
+  .contact-content {
+    grid-template-columns: 1fr;
+  }
+}

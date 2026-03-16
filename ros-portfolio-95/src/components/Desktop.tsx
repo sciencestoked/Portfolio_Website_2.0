@@ -4,6 +4,11 @@ import Icon from './Icon';
 import Window from './Window';
 import Taskbar from './Taskbar';
 import PortfolioNavigator from './PortfolioNavigator';
+import ExperienceWindow from './windows/ExperienceWindow';
+import SkillsWindow from './windows/SkillsWindow';
+import EducationWindow from './windows/EducationWindow';
+import ContactWindow from './windows/ContactWindow';
+import HobbiesWindow from './windows/HobbiesWindow';
 
 interface DesktopProps {
   children?: React.ReactNode;
@@ -68,8 +73,32 @@ const Desktop: React.FC<DesktopProps> = () => {
       content = <PortfolioNavigator onIconReached={handleIconReached} />;
       width = 820;
       height = 700;
+    } else if (iconId === 'experience') {
+      content = <ExperienceWindow />;
+      width = 700;
+      height = 600;
+    } else if (iconId === 'skills') {
+      content = <SkillsWindow />;
+      width = 650;
+      height = 500;
+    } else if (iconId === 'education') {
+      content = <EducationWindow />;
+      width = 550;
+      height = 450;
+    } else if (iconId === 'contact') {
+      content = <ContactWindow />;
+      width = 700;
+      height = 600;
+    } else if (iconId === 'hobbies') {
+      content = <HobbiesWindow />;
+      width = 600;
+      height = 500;
     } else if (iconId === 'resume') {
-      content = <div>Resume PDF viewer coming soon...</div>;
+      content = <div style={{ padding: '20px', fontFamily: 'MS Sans Serif, sans-serif' }}>
+        <h2>Resume</h2>
+        <p>PDF viewer coming soon...</p>
+        <p>For now, please <a href="/assets/Shubham Singhal_Resume.pdf" target="_blank" rel="noopener noreferrer">download my resume</a>.</p>
+      </div>;
     } else {
       content = <div>Content for {icon.title}</div>;
     }
@@ -104,13 +133,42 @@ const Desktop: React.FC<DesktopProps> = () => {
           );
         }
 
-        // Create new window
+        // Create new window with appropriate content
+        let content: React.ReactNode;
+        let width = 600;
+        let height = 400;
+        let title = iconId.charAt(0).toUpperCase() + iconId.slice(1);
+
+        if (iconId === 'experience') {
+          content = <ExperienceWindow />;
+          width = 700;
+          height = 600;
+        } else if (iconId === 'skills') {
+          content = <SkillsWindow />;
+          width = 650;
+          height = 500;
+        } else if (iconId === 'education') {
+          content = <EducationWindow />;
+          width = 550;
+          height = 450;
+        } else if (iconId === 'contact') {
+          content = <ContactWindow />;
+          width = 700;
+          height = 600;
+        } else if (iconId === 'hobbies') {
+          content = <HobbiesWindow />;
+          width = 600;
+          height = 500;
+        } else {
+          content = <div><h2>{title}</h2><p>Content coming soon...</p></div>;
+        }
+
         const newWindow: WindowData = {
           id: iconId,
-          title: iconId.charAt(0).toUpperCase() + iconId.slice(1),
-          content: <div><h2>{iconId.charAt(0).toUpperCase() + iconId.slice(1)}</h2><p>Portfolio content coming soon...</p></div>,
-          width: 600,
-          height: 400,
+          title,
+          content,
+          width,
+          height,
           x: 150 + prev.length * 30,
           y: 80 + prev.length * 30,
           zIndex: newZIndex,
