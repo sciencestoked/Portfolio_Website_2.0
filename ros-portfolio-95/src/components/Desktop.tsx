@@ -9,6 +9,7 @@ import SkillsWindow from './windows/SkillsWindow';
 import EducationWindow from './windows/EducationWindow';
 import ContactWindow from './windows/ContactWindow';
 import HobbiesWindow from './windows/HobbiesWindow';
+import ResumeWindow from './windows/ResumeWindow';
 
 interface DesktopProps {
   children?: React.ReactNode;
@@ -95,11 +96,9 @@ const Desktop: React.FC<DesktopProps> = () => {
       width = 600;
       height = 500;
     } else if (iconId === 'resume') {
-      content = <div style={{ padding: '20px', fontFamily: 'MS Sans Serif, sans-serif' }}>
-        <h2>Resume</h2>
-        <p>PDF viewer coming soon...</p>
-        <p>For now, please <a href="/assets/Shubham Singhal_Resume.pdf" target="_blank" rel="noopener noreferrer">download my resume</a>.</p>
-      </div>;
+      content = <ResumeWindow />;
+      width = 800;
+      height = 600;
     } else {
       content = <div>Content for {icon.title}</div>;
     }
