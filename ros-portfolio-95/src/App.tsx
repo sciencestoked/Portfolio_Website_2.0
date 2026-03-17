@@ -10,12 +10,12 @@ function AppContent() {
   const [bootComplete, setBootComplete] = useState(false);
   const { mode } = useMode();
 
-  // Show boot screen first for Explorer mode
-  if (mode === 'explorer' && !bootComplete) {
+  // Show boot screen FIRST, before anything else
+  if (!bootComplete) {
     return <BootScreen onBootComplete={() => setBootComplete(true)} />;
   }
 
-  // Route based on selected mode
+  // After boot complete, route based on selected mode
   switch (mode) {
     case 'login':
       return <LoginScreen />;
