@@ -35,7 +35,7 @@ const BootScreen: React.FC<BootScreenProps> = ({ onBootComplete }) => {
     <div className="boot-screen">
       <div className="boot-content">
         <img
-          src="/logo-white-bg.png"
+          src="/logo-white-bg-small.png"
           alt="Portfolio OS Logo"
           className="portfolio-logo"
         />
