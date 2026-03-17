@@ -10,6 +10,8 @@ function AppContent() {
   const [bootComplete, setBootComplete] = useState(false);
   const { mode } = useMode();
 
+  console.log('AppContent rendering, mode:', mode, 'bootComplete:', bootComplete);
+
   // Show boot screen first for Explorer mode
   if (mode === 'explorer' && !bootComplete) {
     return <BootScreen onBootComplete={() => setBootComplete(true)} />;
