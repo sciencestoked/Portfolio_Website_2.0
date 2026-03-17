@@ -1,0 +1,6 @@
+{
+  "buildCommand": "cd ros-portfolio-95 && npm install && npm run build",
+  "outputDirectory": "ros-portfolio-95/dist",
+  "installCommand": "cd ros-portfolio-95 && npm install",
+  "framework": "vite"
+}
