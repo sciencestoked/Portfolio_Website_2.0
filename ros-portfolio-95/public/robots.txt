@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://sciencestoked.github.io/sitemap.xml
+Sitemap: https://www.s-singhal.com/sitemap.xml
