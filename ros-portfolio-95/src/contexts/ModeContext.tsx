@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import { createContext, useContext, useState, type ReactNode } from 'react';
 
 export type PortfolioMode = 'login' | 'explorer' | 'recruiter' | 'safe';
 
@@ -9,8 +9,6 @@ interface ModeContextType {
 }
 
 const ModeContext = createContext<ModeContextType | undefined>(undefined);
-
-const STORAGE_KEY = 'portfolioMode';
 
 export const ModeProvider = ({ children }: { children: ReactNode }) => {
   const [mode, setModeState] = useState<PortfolioMode>('login');

@@ -41,7 +41,7 @@ const PortfolioNavigator: React.FC<PortfolioNavigatorProps> = ({ onIconReached }
   const [statusMessage, setStatusMessage] = useState<string>('');
 
   const stageRef = useRef<any>(null);
-  const navigationTimerRef = useRef<NodeJS.Timeout | null>(null);
+  const navigationTimerRef = useRef<number | null>(null);
 
   // Generate maze on mount
   useEffect(() => {
@@ -264,11 +264,10 @@ const PortfolioNavigator: React.FC<PortfolioNavigatorProps> = ({ onIconReached }
 
           {/* Render maze cells (either explored only or full maze based on toggle) */}
           {(showFullMaze
-            ? maze.grid.flatMap((row, gy) => row.map((cell, gx) => `${gx},${gy}`))
+            ? maze.grid.flatMap((row, gy) => row.map((_cell, gx) => `${gx},${gy}`))
             : Array.from(exploredCells)
           ).map(cellKey => {
             const [gx, gy] = cellKey.split(',').map(Number);
-            const cell = maze.grid[gy][gx];
             const isExplored = exploredCells.has(cellKey);
 
             return (
@@ -285,7 +284,7 @@ const PortfolioNavigator: React.FC<PortfolioNavigatorProps> = ({ onIconReached }
 
           {/* Render walls (either explored only or full maze based on toggle) */}
           {(showFullMaze
-            ? maze.grid.flatMap((row, gy) => row.map((cell, gx) => `${gx},${gy}`))
+            ? maze.grid.flatMap((row, gy) => row.map((_cell, gx) => `${gx},${gy}`))
             : Array.from(exploredCells)
           ).map(cellKey => {
             const [gx, gy] = cellKey.split(',').map(Number);
