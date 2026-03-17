@@ -77,13 +77,36 @@
 .taskbar-tray {
   display: flex;
   align-items: center;
+  gap: 4px;
   border: 1px inset #808080;
   height: 20px;
-  padding: 0 8px;
+  padding: 0 4px;
   background-color: #c0c0c0;
+}
+
+.mode-switcher {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 0 4px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.1s ease;
+}
+
+.mode-switcher:hover {
+  background-color: #dfdfdf;
+}
+
+.mode-switcher:active {
+  background-color: #a0a0a0;
 }
 
 .clock {
   font-size: 11px;
   font-family: 'MS Sans Serif', sans-serif;
+  padding: 0 4px;
 }

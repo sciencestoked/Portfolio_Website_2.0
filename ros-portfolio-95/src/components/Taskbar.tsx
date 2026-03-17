@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useMode } from '../contexts/ModeContext';
 import './Taskbar.css';
 
 interface WindowData {
@@ -14,6 +15,7 @@ interface TaskbarProps {
 
 const Taskbar: React.FC<TaskbarProps> = ({ windows, onRestoreWindow }) => {
   const [time, setTime] = useState(new Date());
+  const { logout } = useMode();
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -49,6 +51,13 @@ const Taskbar: React.FC<TaskbarProps> = ({ windows, onRestoreWindow }) => {
         ))}
       </div>
       <div className="taskbar-tray">
+        <button
+          className="mode-switcher"
+          onClick={logout}
+          title="Switch Mode"
+        >
+          ⚙
+        </button>
         <div className="clock">{formatTime(time)}</div>
       </div>
     </div>

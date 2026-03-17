@@ -1,0 +1,29 @@
+<h2>Automated Wall Alignment Ratio (WAR) System</h2>
+<p><em>June 2024 – Sept 2024 | Contract Project for Construction Company</em></p>
+
+<img src="images/war/placeholder-war-banner.jpg" alt="WAR System" style="width:100%; max-width:600px; margin:20px auto; display:block; border-radius:10px;">
+
+<h3>Project Overview</h3>
+<p>Built production ML pipeline to automate wall detection and alignment calculations from floor plan PDFs and images, successfully replacing manual CAD analysis workflow for construction company.</p>
+
+<h3>Technical Approach</h3>
+
+<h4>Transfer Learning Strategy</h4>
+<p>Applied two-stage approach: trained foundation model on public datasets, then fine-tuned on client-specific floor plan styles. Achieved validation loss <strong>below 0.19</strong> with high accuracy on production data.</p>
+
+<h4>Adaptive Fine-Tuning System</h4>
+<p>Designed on-the-fly model retraining system that learns from user corrections, enabling continuous accuracy improvement through weighted feedback integration.</p>
+
+<h4>Optimized Training Pipeline</h4>
+<p>Implemented patch-based processing to preserve architectural detail without downsampling. Applied advanced augmentation techniques (ElasticTransform, CoarseDropout) to improve model robustness across varied floor plan styles.</p>
+
+<h3>Technologies Used</h3>
+<ul>
+    <li><strong>ML Framework:</strong> PyTorch</li>
+    <li><strong>Computer Vision:</strong> Image Segmentation, Feature Extraction</li>
+    <li><strong>Data Processing:</strong> PDF parsing, patch-based processing</li>
+    <li><strong>Deployment:</strong> Production pipeline for automated workflow</li>
+</ul>
+
+<h3>Impact</h3>
+<p>Successfully deployed to replace manual CAD analysis, reducing processing time and improving consistency in wall alignment calculations for construction planning.</p>

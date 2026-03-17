@@ -1,15 +1,44 @@
 import { useState } from 'react';
 import Desktop from './components/Desktop';
 import BootScreen from './components/BootScreen';
+import LoginScreen from './components/LoginScreen';
+import SafeMode from './components/SafeMode';
+import RecruiterMode from './components/RecruiterMode';
+import { ModeProvider, useMode } from './contexts/ModeContext';
+
+function AppContent() {
+  const [bootComplete, setBootComplete] = useState(false);
+  const { mode } = useMode();
+
+  // Show boot screen first for Explorer mode
+  if (mode === 'explorer' && !bootComplete) {
+    return <BootScreen onBootComplete={() => setBootComplete(true)} />;
+  }
+
+  // Route based on selected mode
+  switch (mode) {
+    case 'login':
+      return <LoginScreen />;
+
+    case 'explorer':
+      return <Desktop />;
+
+    case 'recruiter':
+      return <RecruiterMode />;
+
+    case 'safe':
+      return <SafeMode />;
+
+    default:
+      return <LoginScreen />;
+  }
+}
 
 function App() {
-  const [bootComplete, setBootComplete] = useState(false);
-
   return (
-    <>
-      {!bootComplete && <BootScreen onBootComplete={() => setBootComplete(true)} />}
-      {bootComplete && <Desktop />}
-    </>
+    <ModeProvider>
+      <AppContent />
+    </ModeProvider>
   );
 }
 
