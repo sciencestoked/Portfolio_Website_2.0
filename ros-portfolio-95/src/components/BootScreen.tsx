@@ -34,14 +34,13 @@ const BootScreen: React.FC<BootScreenProps> = ({ onBootComplete }) => {
   return (
     <div className="boot-screen">
       <div className="boot-content">
-        <div className="windows-logo">
-          <div className="logo-square red"></div>
-          <div className="logo-square green"></div>
-          <div className="logo-square blue"></div>
-          <div className="logo-square yellow"></div>
-        </div>
-        <h1 className="boot-title">Windows 95</h1>
-        <p className="boot-text">Starting Windows 95...</p>
+        <img
+          src="/logo-white-bg.png"
+          alt="Portfolio OS Logo"
+          className="portfolio-logo"
+        />
+        <h1 className="boot-title">Portfolio OS</h1>
+        <p className="boot-text">Starting Portfolio OS...</p>
         <div className="progress-bar-container">
           <div className="progress-bar" style={{ width: `${progress}%` }}></div>
         </div>
