@@ -1,0 +1,118 @@
+<!-- Main Content for Modal -->
+<section id="blog-post">
+    <!-- Banner Image -->
+    <div class="blog-banner">
+        <img src="images/ugo-online/weights-and-biases-comparision-graph.png" alt="Weights and Biases Comparison Graph" />
+    </div>
+    
+    <!-- Heading -->
+    <header class="blog-header">
+        <h2>Ugo Inc Online Internship: Elevator Button Detection Optimization</h2>
+    </header>
+
+    <!-- Content -->
+    <div class="blog-content">
+        <p>During my online internship at Ugo Inc, I focused on optimizing the Elevator Button Detection Problem. This project involved improving the performance of an existing machine learning model and exploring optimization techniques for deployment on edge devices.</p>
+
+        <h3>Project Overview</h3>
+        <p>The primary goal of the project was to enhance the performance of the Elevator Button Detection model. This involved data augmentation, model optimization, and deployment on edge devices like the Jetson Nano.</p>
+
+        <h3>Performance Enhancement</h3>
+        <p>To boost the model's performance, I experimented with various data augmentation techniques and model optimization methods:</p>
+        <ul>
+            <li><strong>Data Augmentation:</strong> Implemented techniques such as rotation, scaling, and brightness adjustment using <strong>Roboflow</strong> to create a more robust training dataset. This resulted in a 3X performance boost.</li>
+            <li><strong>Model Optimization:</strong> Converted YOLO models to the ONNX format and explored TensorRT SDK for optimization on the Jetson Nano, significantly improving inference speed and efficiency.</li>
+        </ul>
+
+        <div class="blog-image">
+            <img src="images/ugo-online/RoboFlow-Dashboard.png" alt="Roboflow Dashboard" />
+        </div>
+
+        <h3>Experiment Management</h3>
+        <p>To manage and log the experiments, I used <strong>Weights & Biases</strong> for tracking the progress and results:</p>
+        <ul>
+            <li>Logged augmentation techniques and their effects on model performance.</li>
+            <li>Tracked various model versions and their respective performance metrics.</li>
+        </ul>
+
+        <div class="blog-image">
+            <img src="images/ugo-online/elevator-button-inference.jpg" alt="Elevator Button Inference" />
+        </div>
+
+        <h3>RMF Core and Task Dispatcher</h3>
+        <p>I also worked on implementing RMF Core and task dispatcher mechanisms for collective robot control using ROS 2 Humble and Gazebo Fortress/Ignition:</p>
+        <ul>
+            <li><strong>RMF Core:</strong> Integrated RMF Core to manage robot fleets and coordinate their tasks efficiently.</li>
+            <li><strong>Task Dispatcher:</strong> Developed a task dispatcher to assign tasks dynamically to the robots based on their status and location.</li>
+        </ul>
+
+        <div class="blog-image">
+            <img src="images/ugo-online/jetson-nano-setup.png" alt="Jetson Nano Setup" />
+        </div>
+
+        <h3>Challenges and Solutions</h3>
+        <p>During this project, I encountered several challenges, including:</p>
+        <ul>
+            <li><strong>Data Augmentation:</strong> Ensuring the augmented data was realistic and beneficial for training. This was addressed by carefully selecting and testing augmentation techniques.</li>
+            <li><strong>Model Conversion:</strong> Converting the YOLO model to ONNX and ensuring compatibility with TensorRT. This required extensive testing and parameter tuning.</li>
+            <li><strong>RMF Integration:</strong> Integrating RMF Core with the existing system. This was resolved by collaborating with the RMF community and following best practices.</li>
+        </ul>
+
+        <h3>Conclusion</h3>
+        <p>My online internship at Ugo Inc provided me with valuable experience in optimizing machine learning models and deploying them on edge devices. The challenges I faced and overcame during this project have significantly enhanced my skills in robotics and machine learning, preparing me for future endeavors in these fields.</p>
+    </div>
+</section>
+
+<!-- Add some CSS to style the modal content -->
+<style>
+    #blog-post {
+        padding: 20px;
+        background: #fff;
+        border-radius: 8px;
+        max-width: 800px;
+        margin: auto;
+    }
+    
+    .blog-banner img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+    }
+
+    .blog-image {
+        margin: 30px 0;
+        text-align: center;
+    }
+
+    .blog-image img {
+        width: 100%;
+        max-width: 500px;
+        height: auto;
+        border-radius: 8px;
+        display: inline-block;
+    }
+
+    .blog-header h2 {
+        margin-top: 20px;
+        font-size: 2em;
+        color: #333;
+    }
+    
+    .blog-content p {
+        font-size: 1.2em;
+        line-height: 1.6;
+        color: #666;
+    }
+    
+    .blog-content ul,
+    .blog-content ol {
+        margin: 20px 0;
+        padding: 0 20px;
+        list-style-position: inside;
+    }
+    
+    .blog-content li {
+        font-size: 1.1em;
+        line-height: 1.5;
+    }
+</style>

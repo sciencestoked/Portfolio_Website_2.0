@@ -1,0 +1,18 @@
+.desktop {
+  width: 100vw;
+  height: 100vh;
+  background-color: #008080;
+  position: relative;
+  overflow: hidden;
+  cursor: default;
+  user-select: none;
+}
+
+.desktop-icons {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 28px); /* Subtract taskbar height */
+  z-index: 1;
+}

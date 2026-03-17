@@ -1,0 +1,131 @@
+.experience-window {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  background-color: #c0c0c0;
+  padding: 8px;
+  font-family: 'MS Sans Serif', sans-serif;
+}
+
+.experience-header {
+  margin-bottom: 16px;
+  padding: 8px;
+  background-color: #000080;
+  color: white;
+}
+
+.experience-header h2 {
+  margin: 0 0 4px 0;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.experience-header p {
+  margin: 0;
+  font-size: 11px;
+}
+
+.experience-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.experience-item {
+  background-color: #ffffff;
+  border: 2px solid #808080;
+  border-top-color: #ffffff;
+  border-left-color: #ffffff;
+}
+
+.experience-summary {
+  padding: 8px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.experience-summary:hover {
+  background-color: #f0f0f0;
+}
+
+.experience-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.experience-title h3 {
+  margin: 0;
+  font-size: 13px;
+  font-weight: bold;
+  color: #000080;
+}
+
+.expand-icon {
+  font-size: 16px;
+  font-weight: bold;
+  color: #808080;
+}
+
+.experience-role {
+  font-size: 11px;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.experience-meta {
+  font-size: 10px;
+  color: #808080;
+  display: flex;
+  gap: 12px;
+}
+
+.experience-details {
+  padding: 8px;
+  border-top: 1px solid #808080;
+  background-color: #f0f0f0;
+  font-size: 11px;
+}
+
+.highlights,
+.description,
+.technologies {
+  margin-bottom: 12px;
+}
+
+.highlights strong,
+.description strong,
+.technologies strong {
+  display: block;
+  margin-bottom: 4px;
+  color: #000080;
+}
+
+.highlights ul,
+.description ul {
+  margin: 0;
+  padding-left: 20px;
+  list-style-type: square;
+}
+
+.highlights li,
+.description li {
+  margin-bottom: 4px;
+  line-height: 1.4;
+}
+
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.tech-tag {
+  display: inline-block;
+  padding: 2px 6px;
+  background-color: #c0c0c0;
+  border: 1px solid #808080;
+  font-size: 10px;
+  white-space: nowrap;
+}
