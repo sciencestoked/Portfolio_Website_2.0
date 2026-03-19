@@ -36,11 +36,11 @@ const BootScreen: React.FC<BootScreenProps> = ({ onBootComplete }) => {
       <div className="boot-content">
         <img
           src="/logo-white-bg-small.png"
-          alt="Portfolio OS Logo"
+          alt="Shubham OS Logo"
           className="portfolio-logo"
         />
-        <h1 className="boot-title">Portfolio OS</h1>
-        <p className="boot-text">Starting Portfolio OS...</p>
+        <h1 className="boot-title">Shubham OS</h1>
+        <p className="boot-text">Starting Shubham OS...</p>
         <div className="progress-bar-container">
           <div className="progress-bar" style={{ width: `${progress}%` }}></div>
         </div>

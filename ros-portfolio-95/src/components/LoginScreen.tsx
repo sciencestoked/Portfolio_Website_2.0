@@ -28,29 +28,29 @@ const LoginScreen = () => {
 
       <div className="login-dialog">
         <div className="login-header">
-          <div className="login-logo">Portfolio OS</div>
-          <div className="login-subtitle">Select a user to continue</div>
+          <div className="login-logo">Shubham OS</div>
+          <div className="login-subtitle">Select a mode to continue</div>
         </div>
 
         <div className="login-users">
-          <button
-            className={`user-profile ${selectedUser === 'explorer' ? 'selected' : ''}`}
-            onClick={() => setSelectedUser('explorer')}
-            onKeyPress={handleKeyPress}
-          >
-            <div className="user-icon">🐢</div>
-            <div className="user-name">Explorer</div>
-            <div className="user-description">Interactive portfolio with games and navigation</div>
-          </button>
-
           <button
             className={`user-profile ${selectedUser === 'recruiter' ? 'selected' : ''}`}
             onClick={() => setSelectedUser('recruiter')}
             onKeyPress={handleKeyPress}
           >
             <div className="user-icon">💼</div>
-            <div className="user-name">Recruiter</div>
+            <div className="user-name">Recruiter Mode</div>
             <div className="user-description">Clean, professional portfolio overview</div>
+          </button>
+
+          <button
+            className={`user-profile ${selectedUser === 'explorer' ? 'selected' : ''}`}
+            onClick={() => setSelectedUser('explorer')}
+            onKeyPress={handleKeyPress}
+          >
+            <div className="user-icon">🎮</div>
+            <div className="user-name">Explorer Mode</div>
+            <div className="user-description">Interactive portfolio with games and navigation</div>
           </button>
         </div>
 
